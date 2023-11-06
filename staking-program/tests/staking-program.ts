@@ -32,11 +32,6 @@ describe('staking-program', async () => {
     program.programId
   );
 
-  // Log the derived PDAs for reference
-  console.log("Token mint pda: ", tokenMint[0].toBase58());
-	console.log("Mint auth pda: ", mintAuthority[0].toBase58());
-	console.log("Staking auth pda: ", stakingAuthority[0].toBase58());
-
   // Derive the associated token addresses
   const stakingVault = await getAssociatedTokenAddress(
     tokenMint[0], 
@@ -55,11 +50,6 @@ describe('staking-program', async () => {
     Buffer.from("state_account")], 
     program.programId
   );
-
-  // Log the derived addresses for reference
-  console.log("Staking Vault: ", stakingVault.toBase58());
-  console.log("User Token Account: ", userTokenAccount.toBase58());
-  console.log("User Stake pda: ", userStake[0].toBase58());
 
   // Initialize the mint
   it("Create Mint", async () => {

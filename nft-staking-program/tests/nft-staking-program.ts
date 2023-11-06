@@ -84,9 +84,9 @@ describe("nft-staking-program", async () => {
     // Safe airdrop some tokens to the user
     await safeAirdrop(user.publicKey, provider.connection);
 
-    const name = "Uhanmi NFT";
-    const symbol = "UNFT";
-    const uri = "www.uhanmiuri.com";
+    const name = "HotToken NFT";
+    const symbol = "HNFT";
+    const uri = "www.hot-token.com";
 
     // Create and mint the NFT using the program's method
     const txid = await program.methods.createNft(name, symbol, uri)
@@ -106,10 +106,8 @@ describe("nft-staking-program", async () => {
       .rpc();
 
     // Print transaction details for viewing
-    console.log("View transaction in explorer:");
-    console.log(`https://explorer.solana.com/tx/${txid}?cluster=devnet`);
-    console.log("View NFT in explorer:");
-    console.log(`https://explorer.solana.com/address/${nftMint.publicKey}?cluster=devnet`);
+    console.log("");
+    console.log("Transaction signature", txid);  
   });
 
   // Stake NFT test case
@@ -132,8 +130,8 @@ describe("nft-staking-program", async () => {
       .rpc();
 
     // Print transaction details for viewing
-    console.log("View staking transaction in explorer:");
-    console.log(`https://explorer.solana.com/tx/${txid}?cluster=devnet`);
+    console.log("");
+    console.log("Transaction signature", txid);  
 
     // Fetch the user token account info
     const tokenAccountInfo = await getAccount(
@@ -146,13 +144,8 @@ describe("nft-staking-program", async () => {
     expect(tokenAccountInfo.amount).to.equal(BigInt(1));
   });
 
-  // Initialize mint test case (skipped)
-  it.skip("Initialize mint.", async () => {
-    // Initialize mint using the program's method (skipped in this case)
-  });
-
   // Unstake NFT test case
-  it("Unstake NFT.", async () => {
+  it("Unstake NFT!", async () => {
     // Wait for at least 1s to get at least one reward token
     await delay(1000);
 
@@ -178,8 +171,8 @@ describe("nft-staking-program", async () => {
       .rpc();
 
     // Print transaction details for viewing
-    console.log("View unstake transaction in explorer:");
-    console.log(`https://explorer.solana.com/tx/${txid}?cluster=devnet`);
+    console.log("");
+    console.log("Transaction signature", txid);  
 
     // Fetch the NFT token account info
     const nftAccountInfo = await getAccount(
