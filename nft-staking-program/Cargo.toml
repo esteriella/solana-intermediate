@@ -1,6 +1,6 @@
 [workspace]
 members = [
-    "programs/*"
+    "programs/nft-staking-program"
 ]
 
 [profile.release]
